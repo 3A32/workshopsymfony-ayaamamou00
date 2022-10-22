@@ -53,7 +53,7 @@ class ClubController extends AbstractController
     } 
     #[Route('/addClub',name:'app_addclub')]
     public function addClub(ManagerRegistry $doctrine, Request $request )
-    {
+    { #$club=$thid->setDoctrine()->getRepository(ClubRepository)->findall()
         $club= new Club();
         $form=$this->createForm(ClubType::class,$club);
         $form->handleRequest($request);
@@ -67,6 +67,7 @@ class ClubController extends AbstractController
        
         return $this->renderForm("club/addClub.html.twig",array("formClub"=>$form));
     }
+
     #[Route('/updateClub/{id}',name:'app_updateClub')]
     public function updateClub(ClubRepository $repository,$id,ManagerRegistry $doctrine, Request $request )
     {

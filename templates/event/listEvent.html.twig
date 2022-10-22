@@ -1,0 +1,23 @@
+<a href="{{ path('app_addevent') }}">Add event</a> 
+<h1>List events</h1>
+<table border="1">
+<tr>
+<td>id</td>
+<td>title</td>
+<td>DateDebut</td>
+<td>DateFin</td>
+
+</tr>
+{% for i in tabEvent %}
+<tr>
+<td>{{i.id}}</td>
+<td>{{i.title|upper}}</td>
+<td>{{ i.DateDebut|date("m/d/Y") }}</td>
+<td>{{i.getDateFin|date("m/d/Y")}}</td>
+<td>
+ <a href="{{ path('app_updateEvent',{'id':i.id}) }}">Update</a>
+ </td>
+ </tr>
+<br>
+{% endfor %}
+</table>
