@@ -18,6 +18,12 @@ class CategorieController extends AbstractController
             'controller_name' => 'CategorieController',
         ]);
     }
+    #[Route('/categorie',name:'app_categorie')]
+    public function listCategorie(CategorieRepository $repository)
+    {
+        $categorie=$repository->findAll();
+        return $this->render("categorie/listcategorie.html.twig",array("tabCategorie"=>$categorie));
+    } 
     #[Route('/addCategorie',name:'app_addcategorie')]
     public function addCategorie(ManagerRegistry $doctrine, Request $request )
     { #$club=$thid->setDoctrine()->getRepository(ClubRepository)->findall()
@@ -29,7 +35,7 @@ class CategorieController extends AbstractController
     $em=$doctrine->getManager();
     $em->persist($categorie);
     $em->flush();
-    return $this->redirectToRoute("app_addcategorie");
+    return $this->redirectToRoute("app_categorie");
 }
        
         return $this->renderForm("categorie/addCategorie.html.twig",array("formCategorie"=>$form));

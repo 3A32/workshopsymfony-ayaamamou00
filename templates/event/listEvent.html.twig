@@ -6,6 +6,7 @@
 <td>title</td>
 <td>DateDebut</td>
 <td>DateFin</td>
+<td>categorie</td>
 
 </tr>
 {% for i in tabEvent %}
@@ -14,10 +15,12 @@
 <td>{{i.title|upper}}</td>
 <td>{{ i.DateDebut|date("m/d/Y") }}</td>
 <td>{{i.getDateFin|date("m/d/Y")}}</td>
+<td>{{i.categorie}}</td>
 <td>
- <a href="{{ path('app_updateEvent',{'id':i.id}) }}">Update</a>
- </td>
- </tr>
+<a href="{{ path('app_updateEvent',{'id':i.id}) }}">Update</a>
+</td>
+</tr>
 <br>
 {% endfor %}
+
 </table>

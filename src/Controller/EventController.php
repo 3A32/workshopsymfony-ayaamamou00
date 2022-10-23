@@ -23,7 +23,7 @@ class EventController extends AbstractController
     #[Route('/event',name:'app_event')]
     public function listEvent(EventRepository $repository)
     {
-        $event=array($repository->findAll());
+        $event=$repository->findAll();
         return $this->render("event/listevent.html.twig",array("tabEvent"=>$event));
     } 
     #[Route('/addEvent',name:'app_addevent')]
